@@ -1,0 +1,43 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="UPSERT" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+		<description>UPSERTS data.</description>
+		<property name="name" value="UPSERT"/>
+		<property name="configOverrideMap">
+			<map>
+				<entry key="dataAccess.name" value="./read/upsert.csv"/>
+				<entry key="dataAccess.readUTF8" value="true"/>
+				<entry key="dataAccess.type" value="csvRead"/>
+				<entry key="dataAccess.writeUTF8" value="true"/>
+				<entry key="process.enableExtractStatusOutput" value="true"/>
+				<entry key="process.enableLastRunOutput" value="true"/>
+				<entry key="process.lastRunOutputDirectory" value="./log"/>
+				<entry key="process.mappingFile" value="./config/UPSERT.sdl"/>
+				<entry key="process.operation" value="upsert"/>
+				<entry key="process.statusOutputDirectory" value="./log"/>
+				<entry key="sfdc.bulkApiCheckStatusInterval" value="5000"/>
+				<entry key="sfdc.bulkApiSerialMode" value="5000"/>
+				<entry key="sfdc.debugMessages" value="false"/>
+				<entry key="sfdc.enableRetries" value="true"/>
+				<entry key="sfdc.endpoint" value="https://www.salesforce.com/services/Soap/u/29.0"/>
+				<entry key="sfdc.entity" value="Contact"/>
+				<entry key="sfdc.extractionRequestSize" value="500"/>
+				<entry key="sfdc.insertNulls" value="false"/>
+				<entry key="sfdc.loadBatchSize" value="100"/>
+				<entry key="sfdc.maxRetries" value="3"/>
+				<entry key="sfdc.minRetrySleepSecs" value="2"/>
+				<entry key="sfdc.noCompression" value="false"/>
+				<entry key="sfdc.password" value=""/>
+				<entry key="sfdc.proxyHost" value=""/>
+				<entry key="sfdc.proxyNtlmDomain" value=""/>
+				<entry key="sfdc.proxyPassword" value=""/>
+				<entry key="sfdc.proxyPort" value=""/>
+				<entry key="sfdc.proxyUsername" value=""/>
+				<entry key="sfdc.timeoutSecs" value="60"/>
+				<entry key="sfdc.useBulkApi" value="false"/>
+				<entry key="sfdc.username" value="myusername@org.com"/>
+				<entry key="sfdc.externalIdField" value="Id"/>
+			</map>
+		</property>
+	</bean>
+</beans>
